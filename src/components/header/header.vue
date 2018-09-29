@@ -137,11 +137,11 @@ export default {
       return num + "px";
     },
     skipPage(index) {
-      if (index == 1) {
+      if (index == 0) {
         this.$router.push({
           name: "goods"
         });
-      } else if (index == 0) {
+      } else if (index == 1) {
         this.$router.push({
           name: "ratings"
         });
@@ -164,5 +164,3 @@ export default {
 <style lang="less">
   @import url('./header.less');
 </style>
-
-

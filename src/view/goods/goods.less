@@ -1,0 +1,134 @@
+.goods{
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: calc(2.8rem + 44px);
+  bottom: 1.16rem;
+  .menu-wrapper{
+    flex: 0 0 1.6rem;
+    width: 1.6rem;
+    background: #f3f5f7;
+    .menu-item{
+      font-size: 0.24rem;
+      font-weight: 200;
+      line-height: 0.28rem;
+      width: 1.12rem;
+      height: 1.08rem;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, .1); 
+      padding: 0 0.24rem;
+      text-align: center;
+      display: table;
+      .text{
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 0.24rem;
+        font-weight: 200;
+        line-height: 0.28rem;
+      }
+      .icon{
+        display: inline-block;
+        width: 0.32rem;
+        height: 0.32rem;
+        vertical-align: top;
+        margin-right: 0.12rem;
+        background-size: 0.32rem 0.32rem;
+        background-repeat: no-repeat;
+        &.last-child{
+          margin-bottom: 0;
+        }
+        &.decrease{
+          background-image: url('./decrease_4@3x.png');
+        }
+        &.discount{
+          background-image: url('./discount_4@3x.png');
+        }
+        &.guarantee{
+          background-image: url('./guarantee_4@3x.png');
+        }
+        &.invoice{
+          background-image: url('./invoice_4@3x.png');
+        }
+        &.special{
+          background-image: url('./special_4@3x.png');
+        }
+      }
+    }
+  }
+  .foods-wrapper{
+    flex: 1;
+    .title{
+      padding-left: 0.28rem;
+      height: 0.52rem;
+      line-height: 0.52rem;
+      border-left: 0.04rem solid #d9dde1;
+      font-size: 0.24rem;
+      color: rgb(147,153,159);
+      background: #f3f5f7;
+    }
+    .food-item{
+      display: flex;
+      margin: 0.36rem;
+      margin-bottom: 0;
+      padding-bottom: 0.36rem;
+      border-bottom: 0.01rem solid rgba(7,17,27,0.1);
+      &.last-child{
+        border: none;
+        margin-bottom: 0;
+      }
+      .icon{
+        flex: 0 0 1.14rem;
+        margin-right: 0.2rem;
+        img{
+          width: 1.14rem;
+          height: 1.14rem;
+        }
+      }
+      .content{
+        flex: 1;
+        .name{
+          margin: 0.04rem 0 0.08rem;
+          height: 0.28rem;
+          line-height: 0.28rem;
+          font-size: 0.28rem;
+          color: rgb(7,17,27);
+        }
+        .desc , .extra{
+          line-height: 0.2rem;
+          font-size: 0.2rem;
+          color: rgb(147,153,159);
+        }
+        .desc{
+          margin-bottom: 0.16rem;
+          line-height: 0.24rem;
+        }
+        .extra{
+          .count{
+            margin-right: 0.24rem;
+          }
+        }
+        .price{
+          font-weight: 700;
+          line-height: 0.48rem;
+          .now{
+            margin-right: 0.16rem;
+            font-size: 0.28rem;
+            color: rgb(240,20,20);
+            vertical-align: top;
+            line-height: 0.48rem;
+          }
+          .old{
+            text-decoration: line-through;
+            font-size: 0.2rem;
+            color: rgb(147,153,159);
+          }
+        }
+        .cartcontrol-wrapper{
+          position: asbolute;
+          right: 0;
+          bottom: 0.24rem;
+        }
+      }
+    }
+  }
+}
