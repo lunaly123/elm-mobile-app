@@ -51,7 +51,7 @@
                   </span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <Cartcontrol :food="food"></Cartcontrol>
+                  <Cartcontrol :food="food" @add="addBall"></Cartcontrol>
                 </div>
               </div>
             </li>
@@ -60,6 +60,7 @@
       </ul>
     </div>
     <Shopcar
+      ref="shopCar"
       :delivery-price="seller.deliveryPrice" 
       :min-price="seller.minPrice"
       :select-foods="sellectFoods"
@@ -151,6 +152,12 @@ export default {
       let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
       let currentEle = foodList[index];
       this.foodsScroll.scrollToElement(currentEle,300);
+    },
+    drop(el) {
+      this.$refs.shopCar.drop(el);
+    },
+    addBall(el) {
+      this.drop(el)
     }
   }
 }
