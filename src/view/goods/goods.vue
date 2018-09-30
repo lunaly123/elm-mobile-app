@@ -6,6 +6,8 @@
           class="menu-item"
           v-for="(item,index) in goods"
           :key="index"
+          :class="{'current':currentIndex === index}"
+          @click="selectMenu(index)"
         >
           <span class="text">
             <span 
@@ -49,7 +51,7 @@
                   </span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <!-- <cartcontrol :food="food"></cartcontrol> -->
+                  <Cartcontrol :food="food"></Cartcontrol>
                 </div>
               </div>
             </li>
@@ -57,23 +59,87 @@
         </li>
       </ul>
     </div>
+    <Shopcar
+      :delivery-price="seller.deliveryPrice" 
+      :min-price="seller.minPrice"
+    ></Shopcar>
   </div>
 </template>
 <script>
 import { getGoods } from '@/server/api';
 import Cls from '@/common/cls-name/cls-name';
+import BScroll from 'better-scroll';
+import Shopcar from '@/components/shop-car/shop-car';
+import Cartcontrol from '@/components/cartcontrol/cartcontrol';
+
 export default {
+  props: {
+    seller: {
+      type: Object,
+      default: ()=> {}
+    }
+  },
   data() {
     return {
-      goods:[],
-      cls:[]
+      goods: [],
+      cls: [],
+      listHeight: [],
+      scrollY: 0
     }
+  },
+  components: {
+    Shopcar,
+    Cartcontrol
   },
   created() {
     getGoods().then(({data}) =>{
         this.goods = data.data.goods;
+        this.$nextTick(() =>{
+          this.initScroll();
+          this.calulateHeight();
+        })
     }),
     this.cls = Cls;
+  },
+  computed: {
+    currentIndex() {
+      for(let i =0;i<this.listHeight.length;i++){
+        let curr = this.listHeight[i];
+        let next = this.listHeight[i+1];
+        if(!next || (this.scrollY >= curr && this.scrollY < next)){
+          return i;
+        }
+      }
+      return 0;
+    }
+  },
+  methods:{
+    initScroll() {
+      this.menuScroll = new BScroll(this.$refs.menuWrapper,{
+        click:true
+      })
+      this.foodsScroll = new BScroll(this.$refs.foodsWrapper,{
+        probeType: 3,
+        click:true
+      })
+      this.foodsScroll.on('scroll',((position) => {
+        this.scrollY = Math.abs(Math.round(position.y));
+      }))
+    },
+    calulateHeight() {
+      let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
+      let height = 0;
+      this.listHeight.push(height)
+      Array.from(foodList).forEach(item => {
+        height += item.clientHeight;
+        this.listHeight.push(height)
+      })
+    },
+    selectMenu(index) {
+      let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
+      let currentEle = foodList[index];
+      this.foodsScroll.scrollToElement(currentEle,300);
+    }
   }
 }
 </script>

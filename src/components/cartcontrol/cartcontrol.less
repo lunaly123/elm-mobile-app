@@ -1,0 +1,56 @@
+.cartcontrol{
+  font-size: 0;
+  .cart-decrease{
+    display: inline-block;
+    padding: 0.12rem;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    .inner{
+      display: inline-block;
+      line-height: 0.48rem;
+      font-size: 0.48rem;
+      color: rgb(0, 160, 220);
+      transition: .4s;
+      transform: rotate(0);
+    }
+    &.move-leave{
+      
+    }
+    &.move-enter-active , &.move-leave-active{
+      transition: .4s;
+    }
+    &.move-enter , &.move-leave-active{
+      opacity: 0;
+      transform: translate3d(0.48rem,0,0);
+      .inner{
+        transform: rotate(180deg)
+      }
+    }
+  }
+  .cart-count{
+    display: inline-block;
+    vertical-align: top;
+    width: 0.24rem;
+    padding-top: 0.12rem;
+    line-height: 0.48rem;
+    text-align: center;
+    font-size: 0.2rem;
+    color: rgb(147, 153, 159);
+  }
+  .cart-add{
+    display: inline-block;
+    padding: 0.12rem;
+    line-height: 0.48rem;
+    font-size: 0.48rem;
+    color: rgb(0, 160, 220);
+    .icon-zengjia{
+      display: inline-block;
+      line-height: 0.48rem;
+      font-size: 0.48rem;
+      color: rgb(0, 160, 220);
+      transition: .4s;
+      transform: rotate(0);
+    }
+
+  }
+}

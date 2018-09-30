@@ -4,7 +4,7 @@
   width: 100%;
   position: absolute;
   top: calc(2.8rem + 44px);
-  bottom: 1.16rem;
+  bottom: 0.96rem;
   .menu-wrapper{
     flex: 0 0 1.6rem;
     width: 1.6rem;
@@ -19,6 +19,15 @@
       padding: 0 0.24rem;
       text-align: center;
       display: table;
+      &.current{
+        position: relative;
+        z-index: 100;
+        background: #fff;
+        font-weight: 700;
+        .text{
+          border: none;
+        }
+      }
       .text{
         display: table-cell;
         vertical-align: middle;
@@ -72,6 +81,7 @@
       margin-bottom: 0;
       padding-bottom: 0.36rem;
       border-bottom: 0.01rem solid rgba(7,17,27,0.1);
+      position: relative;
       &.last-child{
         border: none;
         margin-bottom: 0;
@@ -121,10 +131,11 @@
             text-decoration: line-through;
             font-size: 0.2rem;
             color: rgb(147,153,159);
+            vertical-align: top;
           }
         }
         .cartcontrol-wrapper{
-          position: asbolute;
+          position: absolute;
           right: 0;
           bottom: 0.24rem;
         }
