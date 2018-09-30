@@ -1,6 +1,6 @@
 <template>
   <div class="shopcart">
-    <div class="content" >
+    <div class="content" @click="toggleList">
       <div class="content-left">
         <div class="logo-wrapper">
           <div 
@@ -9,7 +9,7 @@
           >
             <i 
               class="iconfont"
-              :class="{'icon-gouwuchekong':totalCount < 0 ,'highlight':totalCount > 0,'icon-gouwucheman':totalCount > 0}" 
+              :class="{'icon-gouwuchekong':totalCount === 0 ,'highlight':totalCount > 0,'icon-gouwucheman':totalCount > 0}" 
             ></i>
           </div>
           <div 
@@ -35,20 +35,48 @@
     </div>
     <div class="ball-container">
     </div>
+    <transition name="fold">
+      <div 
+        class="shopcart-list" 
+        v-show="listShow"
+      >
+        <div class="list-header">
+          <h1 class="title">购物车</h1>
+          <div>
+          <span class="empty" @click="empty">清空</span>
+          </div>
+        </div>
+        <div class="list-content" ref="listContent">
+          <ul>
+            <li 
+              class="food" 
+              v-for="(food,index) in selectFoods"
+              :key="index"
+            >
+              <div><span class="name">{{food.name}}</span></div>
+              <div class="price">
+                <span>￥{{food.price*food.count}}</span>
+              </div>
+              <div class="cartcontrol-wrapper">
+                <Cartcontrol :food="food"></Cartcontrol>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
+import Cartcontrol from '@/components/cartcontrol/cartcontrol';
+import BScroll from 'better-scroll';
+
 export default {
   props:{
     selectFoods:{
       type:Array,
-      default: ()=> [
-        {
-          price:15,
-          count:1
-        }
-      ]
+      default: ()=> []
     },
     deliveryPrice:{
       type:Number,
@@ -58,6 +86,14 @@ export default {
       type:Number,
       default:0
     }
+  },
+  data(){
+    return {
+      fold: true
+    }
+  },
+  components: {
+    Cartcontrol
   },
   computed: {
     totalPrice() {
@@ -90,6 +126,37 @@ export default {
       }else{
         return 'enough';
       }
+    },
+    listShow() {
+      if(!this.totalCount) {
+        this.fold = true;
+      }
+      let show = !this.fold;
+      if (show) {
+        this.$nextTick(() => {
+          if (!this.scroll) {
+            this.scroll = new BScroll(this.$refs.listContent, {
+              click: true
+            });
+          } else {
+            this.scroll.refresh();
+          }
+        });
+      }
+      return show;
+    }
+  },
+  methods: {
+    toggleList(){
+      if(!this.totalCount){
+        return;
+      }
+      this.fold = !this.fold;
+    },
+    empty() {
+      this.selectFoods.forEach((food) => {
+        food.count = 0;
+      });
     },
   }
 }

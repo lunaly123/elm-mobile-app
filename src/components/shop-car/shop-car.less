@@ -101,4 +101,67 @@
       }
     }
   }
+  .shopcart-list{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    transform: translate3d(0, -100%, 0);
+    &.fold-enter-active, &.fold-leave-active{
+      transition: .5s;
+    }
+    &.fold-enter, &.fold-leave-active{
+      transform: translate3d(0, 0, 0);
+    }
+    .list-header{
+      height: 0.8rem;
+      line-height: 0.8rem;
+      padding: 0 0.36rem;
+      background: #f3f5f7;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+      .title{
+        float: left;
+        font-size: 0.28rem;
+        color: rgb(7, 17, 27);
+      }
+      .empty{
+        float: right;
+        font-size: 0.28rem;
+        color: rgb(0, 160, 220);
+      }
+    }
+    .list-content{
+      padding: 0 0.36rem;
+      max-height: 4.34rem;
+      overflow: hidden;
+      background: #fff;
+      .food{
+        position: relative;
+        padding: 0.24rem 0;
+        box-sizing: border-box;
+        border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+        font-size: 0;
+        .name{
+          line-height: 0.48rem;
+          font-size: 0.28rem;
+          color: rgb(7, 17, 27);
+        }
+        .price{
+          position: absolute;
+          right: 1.8rem;
+          bottom: 0.24rem;
+          line-height: 0.48rem;
+          font-size: 0.24rem;
+          font-weight: 700;
+          color: rgb(240, 20, 20);
+        }
+        .cartcontrol-wrapper{
+          position: absolute;
+          right: 0;
+          bottom: 0.12rem;
+        }
+      }
+    }
+  }
 }
