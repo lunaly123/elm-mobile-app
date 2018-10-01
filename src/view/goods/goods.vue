@@ -32,6 +32,7 @@
               v-for="(food,index) in item.foods" 
               :key="index"
               class="food-item"
+              @click="selectFood(food)"
             >
               <div class="icon">
                 <img :src="food.icon" />
@@ -65,6 +66,11 @@
       :min-price="seller.minPrice"
       :select-foods="sellectFoods"
     ></Shopcar>
+    <DetailFood 
+      :food="currectFood" 
+      ref="detailFood"
+    >
+    </DetailFood>
   </div>
 </template>
 <script>
@@ -72,7 +78,8 @@ import { getGoods } from '@/server/api';
 import Cls from '@/common/cls-name/cls-name';
 import BScroll from 'better-scroll';
 import Shopcar from '@/components/shop-car/shop-car';
-import Cartcontrol from '@/components/cartcontrol/cartcontrol';
+import Cartcontrol from '@/components/cart-control/cart-control';
+import DetailFood from '@/view/food/food';
 
 export default {
   props: {
@@ -86,12 +93,14 @@ export default {
       goods: [],
       cls: [],
       listHeight: [],
-      scrollY: 0
+      scrollY: 0,
+      currectFood: {}
     }
   },
   components: {
     Shopcar,
-    Cartcontrol
+    Cartcontrol,
+    DetailFood
   },
   created() {
     getGoods().then(({data}) =>{
@@ -161,6 +170,10 @@ export default {
     },
     addBall(el) {                          
       this.drop(el)
+    },
+    selectFood(food) {
+      this.currectFood = food;
+      this.$refs.detailFood.show();
     }
   }
 }

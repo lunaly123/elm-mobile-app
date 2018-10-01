@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import Cartcontrol from '@/components/cartcontrol/cartcontrol';
+import Cartcontrol from '@/components/cart-control/cart-control';
 import BScroll from 'better-scroll';
 
 export default {
@@ -103,6 +103,18 @@ export default {
     return {
       fold: true,
       balls:[
+        {
+          show:false
+        },
+        {
+          show:false
+        },
+        {
+          show:false
+        },
+        {
+          show:false
+        },
         {
           show:false
         }
@@ -192,9 +204,8 @@ export default {
         let ball = this.balls[count];
         if (ball.show) {
           let rect = ball.el.getBoundingClientRect();
-          let x = rect.left - 32;
-          console.log(window.innerHeight - rect.top)
-          let y = -(window.innerHeight - rect.top - 42);
+          let x = rect.left - rect.width;
+          let y = -(window.innerHeight - rect.top - rect.height);
           el.style.display = 'block';
           el.style.webkitTransform = `translate3d(0,${y}px,0)`;
           el.style.transform = `translate3d(0,${y}px,0)`;

@@ -17,7 +17,7 @@
     </div>
     <div 
       class="cart-add" 
-      @click="addCart"
+      @click.stop.prevent="addCart"
     >
       <i class="iconfont icon-zengjia"></i>
     </div>
@@ -40,6 +40,7 @@ export default {
         this.food.count++;
       }
       this.$emit('add',event.target);
+      console.log(event.target,this.food.count)
     },
     decreaseCart(event) {
       if(this.food.count){
@@ -51,6 +52,6 @@ export default {
 </script>
 
 <style lang="less">
-@import url('./cartcontrol.less');
+@import url('./cart-control.less');
 </style>
 
