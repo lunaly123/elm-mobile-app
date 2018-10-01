@@ -154,9 +154,12 @@ export default {
       this.foodsScroll.scrollToElement(currentEle,300);
     },
     drop(el) {
-      this.$refs.shopCar.drop(el);
+      //强行异步处理下落动画，优化效果
+      this.$nextTick(() => {
+        this.$refs.shopCar.drop(el);
+      });
     },
-    addBall(el) {
+    addBall(el) {                          
       this.drop(el)
     }
   }

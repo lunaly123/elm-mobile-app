@@ -105,19 +105,7 @@ export default {
       balls:[
         {
           show:false
-        },
-        {
-          show:false
-        },
-        {
-          show:false
-        },
-        {
-          show:false
-        },
-        {
-          show:false
-        },
+        }
       ],
       dropBalls: []
     }
@@ -189,16 +177,14 @@ export default {
       });
     },
     drop(el) {
-      for (let i = 0; i < this.balls.length; i++) {
-        let ball = this.balls[i];
-        if (!ball.show) {
+      this.balls.some((ball) => {
+        if(!ball.show){
           ball.show = true;
           ball.el = el;
           this.dropBalls.push(ball);
-          console.log(ball)
-          return;
+          return true;
         }
-      }
+      });
     },
     beforeDrop(el) {
       let count = this.balls.length;
@@ -207,8 +193,9 @@ export default {
         if (ball.show) {
           let rect = ball.el.getBoundingClientRect();
           let x = rect.left - 32;
-          let y = -(window.innerHeight - rect.top - 22);
-          el.style.display = '';
+          console.log(window.innerHeight - rect.top)
+          let y = -(window.innerHeight - rect.top - 42);
+          el.style.display = 'block';
           el.style.webkitTransform = `translate3d(0,${y}px,0)`;
           el.style.transform = `translate3d(0,${y}px,0)`;
           let inner = el.getElementsByClassName('inner-hook')[0];
