@@ -121,5 +121,59 @@
       font-size: 0.28rem;
       color: rgb(7,17,27);
     }
+    .rating-wrapper{
+      padding: 0 0.36rem;
+      .rating-item{
+        position: relative;
+        padding: 0.32rem 0;
+        border-bottom: 0.01rem solid rgba(7, 17, 27, .1);
+        .user{
+          position: absolute;
+          top: 0.32rem;
+          right: 0;
+          line-height: 0.24rem;
+          font-size: 0;
+          .name{
+            display: inline-block;
+            margin-right: 0.12rem;
+            vertical-align: top;
+            font-size: 0.2rem;
+            color: rgb(147,153,159);
+          }
+          .avatar{
+            border-radius: 50%;
+            width: 0.24rem;
+            height: 0.24rem;
+          }
+        }
+        .time{
+          margin-bottom: 0.12rem;
+          line-height: 0.24rem;
+          font-size: 0.2rem;
+          color: rgb(147,153,159);
+        }
+        .text{
+          line-height: 0.32rem;
+          font-size: 0.24rem;
+          color: rgb(1, 17, 27);
+          .icon-dianzan, .icon-yijin14-cai{
+            margin-right: 0.08rem;
+            line-height: 0.32rem;
+            font-size: 0.24rem;
+          }
+          .icon-dianzan{
+            color: rgb(0,160,220);
+          }
+          .icon-yijin14-cai{
+            color: rgb(147,153,159);
+          }
+        }
+      }
+      .no-rating{
+        padding: 0.32rem 0;
+        font-size: 0.24rem;
+        color: rgb(147,153,159);
+      }
+    }
   }
 }

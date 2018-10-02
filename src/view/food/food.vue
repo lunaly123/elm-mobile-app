@@ -51,6 +51,30 @@
             @changeSelectType="changeType"
             @changeContent="changeOnlyContent"
           ></Ratingselect>
+          <div class="rating-wrapper">
+            <ul v-show="food.ratings && food.ratings.length">
+              <li 
+              class="rating-item"
+              v-for="(rating,index) in food.ratings" 
+              :key="index"
+              v-show="needShow(rating.rateType, rating.text)"
+              >
+                <div class="user">
+                  <span class="name">{{rating.username}}</span>
+                  <img class="avatar" :src="rating.avatar" />
+                </div>
+                <div class="time">{{rating.rateTime | formatDate}}</div>
+                <p class="text">
+                  <i 
+                    class="iconfont" 
+                    :class="{'icon-dianzan':rating.rateType === 0,'icon-yijin14-cai':rating.rateType === 1}"
+                  ></i>
+                  {{rating.text}}
+                </p>
+              </li>
+            </ul>
+            <div class="no-rating" v-show="!food.ratings || !food.ratings.length">暂无评价</div>
+          </div>
         </div>
       </div>
     </div>
@@ -63,6 +87,7 @@ import BScroll from 'better-scroll';
 import Cartcontrol from '@/components/cart-control/cart-control';
 import Split from '@/components/split/split';
 import Ratingselect from '@/components/rating-select/rating-select';
+import { formatDate } from '@/common/js/date';
 
 const POSITIVE = 0;
 const NEGATIVE = 1;
@@ -92,11 +117,17 @@ export default {
       }
     }
   },
+  filters: {
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date,'yyyy-MM-dd hh:mm')
+    }
+  },
   methods: {
     show() {
       this.footShow = true;
       this.selectType = ALL;
-      this.onlyContent = false;
+      this.onlyContent = true;
       this.$nextTick(() => {
         if(!this.scroll) {
           this.scroll = new BScroll(this.$refs.food,{
@@ -116,9 +147,25 @@ export default {
     },
     changeType(type) {
       this.selectType = type;
+      this.$nextTick(() => {//DOM更新是异步的，直接refresh无法刷新
+        this.scroll.refresh();
+      })
     },
     changeOnlyContent(bl) {
       this.onlyContent = bl;
+      this.$nextTick(() => {//DOM更新是异步的，直接refresh无法刷新
+        this.scroll.refresh();
+      })
+    },
+    needShow(type, text) {
+      if(this.onlyContent && !text) {
+        return false;
+      }
+      if(this.selectType === ALL) {
+        return true;
+      } else {
+        return type === this.selectType;
+      }
     }
   }
 }
