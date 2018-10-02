@@ -1,0 +1,167 @@
+.ratings{
+  position: absolute;
+  top: calc(2.8rem + 44px);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  .overview{
+    display: flex;
+    padding: 0.36rem 0;
+    .overview-left{
+      flex: 0 0 2.75rem;
+      width: 2.75rem;
+      border-right: 0.01rem solid rgba(7, 17, 27, 0.1);
+      text-align: center;
+      .score{
+        margin-bottom: 0.12rem;
+        line-height: 0.56rem;
+        font-size: 0.48rem;
+        color: rgb(255, 153, 0);
+      }
+      .title{
+        margin-bottom: 0.16rem;
+        line-height: 0.24rem;
+        font-size: 0.24rem;
+        color: rgb(7, 17, 27);
+      }
+      .rank{
+        line-height: 0.2rem;
+        font-size: 0.2rem;
+        color: rgb(147, 153, 159);
+      }
+    }
+    .overview-right{
+      flex: 1;
+      padding: 0 0.48rem;
+      .score-wrapper{
+        margin-bottom: 0.16rem;
+        display: flex;
+        align-items: center;
+        .title{
+          line-height: 0.36rem;
+          vertical-align: top;
+          font-size: 0.24rem;
+          color: rgb(7, 17, 27);
+        }
+        .star{
+          vertical-align: top;
+          margin: 0 0.2rem;
+          .star-item{
+            width: 0.36rem;
+            height: 0.36rem;
+            background-size: 0.36rem 0.36rem;
+            margin-right: 0.05rem;
+            &.last-child{
+              margin: 0;
+            }
+          }
+        }
+        .score{
+          line-height: 0.36rem;
+          vertical-align: top;
+          font-size: 0.24rem;
+          color: rgb(255, 153, 0);
+        }
+      }
+      .delivery-wrapper{
+        font-size: 0;
+        .title{
+          line-height: 0.36rem;
+          font-size: 0.24rem;
+          color: rgb(7, 17, 27);
+        }
+        .delivery{
+          margin-left: 0.24rem;
+          font-size: 0.24rem;
+          color: rgb(147, 153, 159);
+        }
+      }
+    }
+  }
+  .rating-wrapper{
+    padding: 0 0.36rem;
+    .rating-item{
+      display: flex;
+      padding: 0.36rem 0;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+      .avatar{
+        flex: 0 0 0.56rem;
+        width: 0.56rem;
+        margin-right: 0.24rem;
+        img{
+          border-radius: 50%;
+          width: 0.56rem;
+          height: 0.56rem;
+          vertical-align: top;
+        }
+      }
+      .content{
+        position: relative;
+        flex: 1;
+        .name{
+          margin-bottom: 0.08rem;
+          line-height: 0.24rem;
+          font-size: 0.2rem;
+          color: rgb(7, 17, 27);
+        }
+        .star-wrapper{
+          margin-bottom: 0.12rem;
+          display: flex;
+          align-items: center;
+          .star{
+            vertical-align: top;
+            margin: 0 0.2rem 0 0;
+            .star-item{
+              width: 0.36rem;
+              height: 0.36rem;
+              background-size: 0.36rem 0.36rem;
+              margin-right: 0.05rem;
+              &.last-child{
+                margin: 0;
+              }
+            }
+          }
+          .delivery{
+            height: 0.24rem;
+            font-size: 0.2rem;
+            color: rgb(147, 153, 159);
+          }
+        }
+        .text{
+          margin-bottom: 0.16rem;
+          line-height: 0.36rem;
+          color: rgb(7, 17, 27);
+          font-size: 0.24rem;
+        }
+        .recommend{
+          line-height: 0.32rem;
+          font-size: 0;
+          .icon-dianzan, .item{
+            display: inline-block;
+            margin: 0 0.16rem 0.08rem 0;
+            font-size: 0.18rem;
+          }
+          .icon-dianzan{
+            color: rgb(0, 160, 220);
+          }
+          .item{
+            padding: 0 0.12rem;
+            border: 0.01rem solid rgba(7, 17, 27, 0.1);
+            border-radius: 0.02rem;
+            color: rgb(147, 153, 159);
+            background: #fff
+          }
+        }
+        .time{
+          position: absolute;
+          top: 0;
+          right: 0;
+          line-height: 0.24rem;
+          font-size: 0.2rem;
+          color: rgb(147, 153, 159);
+        }
+      }
+    }
+  }
+}
