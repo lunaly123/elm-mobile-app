@@ -1,0 +1,200 @@
+.seller{
+  position: absolute;
+  top: calc(2.8rem + 44px);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  .overview{
+    position: relative;
+    padding: 0.36rem;
+    .title{
+      margin-bottom: 0.16rem;
+      line-height: 0.28rem;
+      color: rgb(7, 17, 27);
+      font-size: 0.28rem;
+    }
+    .desc{
+      padding-bottom: 0.36rem;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+      display: flex;
+      align-items: center;
+      .star{
+        vertical-align: top;
+        margin: 0 0.2rem 0 0;
+        .star-item{
+          width: 0.36rem;
+          height: 0.36rem;
+          background-size: 0.36rem 0.36rem;
+          margin-right: 0.05rem;
+          &.last-child{
+            margin: 0;
+          }
+        }
+      }
+      .text{
+        margin-right: 0.24rem;
+        line-height: 0.36rem;
+        vertical-align: top;
+        font-size: 0.2rem;
+        color: rgb(77, 85, 93);
+      }
+    }
+    .remark{
+      display: flex;
+      padding-top: 0.36rem;
+      .box{
+        flex: 1;
+        text-align: center;
+        border-right: 0.01rem solid rgba(7, 17, 27, 0.1);
+        &:last-child{
+          border: none;
+        }
+        h2{
+          margin-bottom: 0.08rem;
+          line-height: 0.2rem;
+          font-size: 0.2rem;
+          color: rgb(147, 153, 159);
+        }
+        .content{
+          line-height: 0.48rem;
+          font-size: 0.2rem;
+          color: rgb(7, 17, 27);
+          .stress{
+            font-size: 0.48rem;
+          }
+        }
+      }
+    }
+    .favorite{
+      position: absolute;
+      width: 1rem;
+      right: 0.22rem;
+      top: 0.36rem;
+      text-align: center;
+      .icon-xihuan{
+        display: block;
+        margin-bottom: 0.08rem;
+        line-height: 0.48rem;
+        font-size: 0.48rem;
+        color: #d4d6d9;
+        &.active{
+          color: rgb(240, 20, 20);
+        }
+      }
+      .text{
+        line-height: 0.2rem;
+        font-size: 0.2rem;
+        color: rgb(77, 85, 93);
+      }
+    }
+  }
+  .bulletin{
+    padding: 0.36rem 0.36rem 0 0.36rem;
+    .title{
+      margin-bottom: 0.16rem;
+      line-height: 0.28rem;
+      color: rgb(7, 17, 27);
+      font-size: 0.28rem;
+    }
+    .content-wrapper{
+      padding: 0 0.24rem 0.32rem 0.24rem;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+      .content{
+        line-height: 0.48rem;
+        font-size: 0.24rem;
+        color: rgb(240, 20, 20);
+      }
+    }
+    .supports{
+      .support-item{
+        padding: 0.32rem 0.24rem;
+        border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+        display: flex;
+        align-items: center;
+        &:last-child{
+          border: none;
+        }
+      }
+      .icon{
+        display: block;
+        width: 0.32rem;
+        height: 0.32rem;
+        vertical-align: top;
+        margin-right: 0.12rem;
+        background-size: 0.32rem 0.32rem;
+        background-repeat: no-repeat;
+        &.decrease{
+          background-image: url('./decrease_4@3x.png')
+        }
+        &.discount{
+          background-image: url('./discount_4@3x.png')
+        }
+        &.guarantee{
+          background-image: url('./guarantee_4@3x.png')
+        }
+        &.invoice{
+          background-image: url('./invoice_4@3x.png')
+        }
+        &.special{
+          background-image: url('./special_4@3x.png')
+        }
+      }
+      .text{
+        display: block;
+        line-height: 0.32rem;
+        font-size: 0.24rem;
+        color: rgb(7, 17, 27);
+      }
+    }
+  }
+  .pics{
+    padding: 0.36rem;
+    .title{
+      margin-bottom: 0.24rem;
+      line-height: 0.28rem;
+      color: rgb(7, 17, 27);
+      font-size: 0.28rem;
+    }
+    .pic-wrapper{
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      .pic-list{
+        font-size: 0;
+        .pic-item{
+          display: inline-block;
+          margin-right: 0.12rem;
+          width: 2.4rem;
+          height: 1.8rem;
+          img{
+            width: 2.4rem;
+            height: 1.8rem;
+          }
+          &:last-child{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .info{
+    padding: 0.36rem 0.36rem 0 0.36rem;
+    color: rgb(7, 17, 27);
+    .title{
+      padding-bottom: 0.24rem;
+      line-height: 0.28rem;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+      font-size: 0.28rem;
+    }
+    .info-item{
+      padding: 0.32rem 0.24rem;
+      line-height: 0.32rem;
+      border-bottom: 0.01rem solid rgba(7, 17, 27, 0.1);
+      font-size: 0.24rem;
+      &:last-child{
+        border: none;
+      }
+    }
+  }
+}

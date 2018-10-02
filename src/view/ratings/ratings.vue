@@ -121,14 +121,12 @@ export default {
   methods: {
     changeType(type) {
       this.selectType = type;
-      console.log(type)
       this.$nextTick(() => {//DOM更新是异步的，直接refresh无法刷新
         this.scroll.refresh();
       })
     },
     changeOnlyContent(bl) {
       this.onlyContent = bl;
-      console.log(bl)
       this.$nextTick(() => {//DOM更新是异步的，直接refresh无法刷新
         this.scroll.refresh();
       })

@@ -108,6 +108,8 @@
 <script>
 import { Tab, TabItem } from "vux";
 import Star from '@/components/star/star';
+import Cls from '@/common/cls-name/cls-name';
+
 export default {
   props: {
     seller: {
@@ -127,7 +129,7 @@ export default {
     Star
   },
   created(){
-    this.cls = ['decrease','discount','special','invoice','guarantee'];
+    this.cls = Cls;
   },
   methods: {
     //设置tab线条宽度
