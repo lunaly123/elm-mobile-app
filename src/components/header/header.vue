@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <!-- stricky footer -->
+      <!-- footer -->
       <div 
         class="detail-close"
         @click="closeDetail"
@@ -87,17 +87,19 @@
     >
       <tab-item 
       @on-item-click="skipPage"
-      selected 
+      :selected="tabIndex === 0"
       >
         商品
       </tab-item>
       <tab-item 
       @on-item-click="skipPage" 
+      :selected="tabIndex === 1"
       >
         评价
       </tab-item>
       <tab-item 
       @on-item-click="skipPage" 
+      :selected="tabIndex === 2"
       >
         商家
       </tab-item>
@@ -120,7 +122,8 @@ export default {
   data(){
     return {
       cls: [],
-      detailShow: false
+      detailShow: false,
+      tabIndex: 0
     }
   },
   components: {
@@ -130,16 +133,11 @@ export default {
   },
   created(){
     this.cls = Cls;
+    this.tabIndex = this.$route.meta.selected;
   },
   methods: {
-    //设置tab线条宽度
-    getBarWidth(index) {
-      let num;
-      index == 1 ? (num = 28) : (num = 42);
-      index % 2 == 0 ? (num = 56) : true;
-      return num + "px";
-    },
     skipPage(index) {
+      this.tabIndex = index;
       if (index == 0) {
         this.$router.push({
           name: "goods"

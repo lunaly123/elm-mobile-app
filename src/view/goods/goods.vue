@@ -69,6 +69,8 @@
     <DetailFood 
       :food="currectFood" 
       ref="detailFood"
+      @add="addBall"
+      @seed="addBall"
     >
     </DetailFood>
   </div>
@@ -168,8 +170,9 @@ export default {
         this.$refs.shopCar.drop(el);
       });
     },
-    addBall(el) {                          
-      this.drop(el)
+    addBall(el) {
+      console.log(el)                          
+      this.drop(el);
     },
     selectFood(food) {
       this.currectFood = food;

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header :seller="seller"></Header>
-    <router-view :seller="seller"></router-view>
+    <keep-alive>
+      <router-view :seller="seller" ></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -20,9 +22,9 @@ export default {
     }
   },
   created(){
-      getSeller().then(({data}) =>{
-        this.seller = data.data.seller;
-      })
+    getSeller().then(({data}) =>{
+      this.seller = data.data.seller;
+    })
   }
 }
 </script>

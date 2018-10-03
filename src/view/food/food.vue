@@ -23,14 +23,19 @@
             </span>
           </div>
           <div class="cartcontrol-wrapper">
-            <Cartcontrol :food="food" ref="cartcontrol"></Cartcontrol>
+            <Cartcontrol 
+              :food="food" 
+              ref="cartcontrol" 
+              @add="receive"
+            >
+            </Cartcontrol>
           </div>
           <transition name="fade">
               <div 
-              class="buy" 
-              v-show="!food.count ||food.count === 0"
-              @click.stop.prevent="addFirst"
-            >
+                class="buy" 
+                v-show="!food.count ||food.count === 0"
+                @click.stop.prevent="addFirst"
+              >
               加入购物车
             </div>    
           </transition>
@@ -141,9 +146,12 @@ export default {
     back() {
       this.footShow = false;
     },
-    addFirst(ev) {
+    addFirst(event) {
       this.$set(this.food,'count',1);
-      this.$refs.cartcontrol.addCart(ev);
+      this.$emit('add',event.target);
+    },
+    receive(event) {
+      this.$emit('seed',event);
     },
     changeType(type) {
       this.selectType = type;

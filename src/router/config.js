@@ -10,16 +10,19 @@ export let routeConfig = [
     path: '/goods',
     name: 'goods',
     component: goods,
-    title:'商家'
+    title:'商家',
+    meta: { selected: 0 }
   }, {
     path: '/ratings',
     name: "ratings",
     component: ratings,
-    title:'评价'
+    title:'评价',
+    meta: { selected: 1 }
   }, {
     path: '/seller',
     name: 'seller',
     component: seller,
-    title:'卖家'
+    title:'卖家',
+    meta: { selected: 2 }
   }
 ]

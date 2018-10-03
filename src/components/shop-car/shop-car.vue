@@ -198,14 +198,19 @@ export default {
         }
       });
     },
-    beforeDrop(el) {
+    beforeDrop(el) {//过渡开始之前，小球需要先移动到起始位置，所以y值为负
       let count = this.balls.length;
       while (count--) {
         let ball = this.balls[count];
         if (ball.show) {
+          let dpi = window.devicePixelRatio;
+          let screenWidth = window.screen.width;
+          let pixel = dpi*screenWidth;
           let rect = ball.el.getBoundingClientRect();
-          let x = rect.left - rect.width;
-          let y = -(window.innerHeight - rect.top - rect.height);
+          let left = (82*(pixel/750))/dpi;
+          let bottom = (58*(pixel/750))/dpi;
+          let x = rect.left + (rect.width/2) -left;
+          let y = -(window.innerHeight - rect.top - (rect.height/2) - bottom);
           el.style.display = 'block';
           el.style.webkitTransform = `translate3d(0,${y}px,0)`;
           el.style.transform = `translate3d(0,${y}px,0)`;
@@ -215,7 +220,7 @@ export default {
         }
       }
     },
-    dropping(el, done) {
+    dropping(el, done) {//小球移动完成后回到原位
       let rf = el.offsetHeight;
       this.$nextTick(() => {
         el.style.webkitTransform = 'translate3d(0,0,0)';

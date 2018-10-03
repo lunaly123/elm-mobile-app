@@ -29,8 +29,12 @@
           </li>
         </ul>
         <div class="favorite">
-          <i class="iconfont icon-xihuan"></i>
-          <span class="text"></span>
+          <i 
+            class="iconfont icon-xihuan" 
+            :class="{'active':favorite}"
+            @click="toggleFavorite"
+          ></i>
+          <span class="text">{{favoriteText}}</span>
         </div>
       </div>
       <split></split>
@@ -84,6 +88,7 @@ import BScroll from 'better-scroll';
 import Split from '@/components/split/split.vue';
 import Star from '@/components/star/star';
 import Cls from '@/common/cls-name/cls-name';
+import { saveToLocal, loadFromLocal } from '@/common/js/store';
 
 export default {
   props: {
@@ -98,7 +103,8 @@ export default {
   },
   data(){
     return {
-      cls: []
+      cls: [],
+      favorite: false
     }
   },
   created() {
@@ -108,11 +114,18 @@ export default {
     this.initScroll();
     this.initPics();
   },
+  computed: {
+    favoriteText() {
+      return this.favorite ? '已收藏' : '收藏';
+    }
+  },
   watch: {
     'seller'() {
       this.$nextTick(() => {
         this.initScroll();
         this.initPics();
+        this.$set(this.seller,'id','123');
+        this.favorite = loadFromLocal(this.seller.id, 'favorite', false)
       });
     }
   },
@@ -146,6 +159,10 @@ export default {
           }
         });
       }
+    },
+    toggleFavorite() {
+      this.favorite = !this.favorite;
+      saveToLocal(this.seller.id, 'favorite', this.favorite)
     }
   }
 }

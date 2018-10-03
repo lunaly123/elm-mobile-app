@@ -39,8 +39,8 @@ export default {
       }else{
         this.food.count++;
       }
+      console.log(event.target)
       this.$emit('add',event.target);
-      console.log(event.target,this.food.count)
     },
     decreaseCart(event) {
       if(this.food.count){
