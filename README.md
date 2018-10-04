@@ -169,8 +169,3 @@ npm run build
 
 >后续功能待测试继续改进
 
-
-
-# Thanks
-
-- [ustbhuangyi](http://coding.imooc.com/class/74.html)
