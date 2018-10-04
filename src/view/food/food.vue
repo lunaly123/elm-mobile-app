@@ -150,8 +150,8 @@ export default {
       this.$set(this.food,'count',1);
       this.$emit('add',event.target);
     },
-    receive(event) {
-      this.$emit('seed',event);
+    receive(el) {
+      this.$emit('seed',el);
     },
     changeType(type) {
       this.selectType = type;

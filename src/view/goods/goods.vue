@@ -170,8 +170,7 @@ export default {
         this.$refs.shopCar.drop(el);
       });
     },
-    addBall(el) {
-      console.log(el)                          
+    addBall(el) {                     
       this.drop(el);
     },
     selectFood(food) {
