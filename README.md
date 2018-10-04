@@ -62,7 +62,7 @@ npm run build
 
 ### 举例：
 设计稿为750px下宽度为240的图片在各种DPR设备下的实际尺寸：
-```js
+```
   iPhone4 ：
           DPR=2， device-width=320px; 
         picWidth = (240*(320*2/750))/2;
