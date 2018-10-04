@@ -89,7 +89,7 @@ npm run build
       let margin = (12*(pixel/750))/dpi;
       let width = (picWidth + margin) * this.seller.pics.length - margin;
       this.$refs.picList.style.width = width + 'px';
-      this.$nextTick(() => {
+      this.$nextTick(() ={
         if (!this.picScroll) {
           this.picScroll = new BScroll(this.$refs.picWrapper, {
             scrollX: true,
@@ -103,31 +103,33 @@ npm run build
   }
 ```
 # 适配思路：
-
-> 750px/7.5 = 100px
-> 100vw/7.5 = 13.3333333333333333333333vw 
-> 100px = 13.3333333333333333333333vw 
-> 13.3333333333333333333333vw = 1rem
-> 100vw = 750px
-> 1vw = 7.5px
-> 100px = 1rem 
-> 90px = 0.9rem =  13.3333333333333333333333 x 0.9 x 7.5
+```js
+  750px/7.5 = 100px
+  100vw/7.5 = 13.3333333333333333333333vw 
+  100px = 13.3333333333333333333333vw 
+  13.3333333333333333333333vw = 1rem
+  100vw = 750px
+  1vw = 7.5px
+  100px = 1rem 
+  90px = 0.9rem =  13.3333333333333333333333 x 0.9 x 7.5
+```
 
 ### 举例：
-- 设计稿为750px下宽度为240的图片在各种DPR设备下的实际尺寸：
-> iPhone4 ：
->         DPR=2， device-width=320 
- >        picWidth = (240*(320*2/750))/2
-> iPhone6 ：
->         DPR=2， device-width=375 
->         picWidth = (240*(375*2/750))/2
-> iPhoneX ：
->         DPR=3， device-width=375 
->         picWidth = (240*(375*3/750))/3
-> Pixel 2 XL：
->         DPR=3.5， device-width=411 
->         picWidth = (240*(411*3.5/750))/3.5
-
+设计稿为750px下宽度为240的图片在各种DPR设备下的实际尺寸：
+```js
+  iPhone4 ：
+          DPR=2， device-width=320 
+        picWidth = (240*(320*2/750))/2
+  iPhone6 ：
+          DPR=2， device-width=375 
+          picWidth = (240*(375*2/750))/2
+  iPhoneX ：
+          DPR=3， device-width=375 
+          picWidth = (240*(375*3/750))/3
+  Pixel 2 XL：
+          DPR=3.5， device-width=411 
+          picWidth = (240*(411*3.5/750))/3.5
+```
 
 # API
 
