@@ -64,16 +64,16 @@ npm run build
 设计稿为750px下宽度为240的图片在各种DPR设备下的实际尺寸：
 ```
   iPhone4 ：
-          DPR= 2， device-width= 320px; 
+          DPR = 2， device-width = 320px; 
           picWidth = (240*(320*2/750))/2;
   iPhone6 ：
-          DPR= 2， device-width= 375px; 
+          DPR = 2， device-width = 375px; 
           picWidth = (240*(375*2/750))/2;
   iPhoneX ：
-          DPR= 3， device-width= 375px; 
+          DPR = 3， device-width = 375px; 
           picWidth = (240*(375*3/750))/3;
   Pixel 2 XL：
-          DPR= 3.5， device-width= 411px; 
+          DPR = 3.5， device-width = 411px; 
           picWidth = (240*(411*3.5/750))/3.5;
 ```
 
