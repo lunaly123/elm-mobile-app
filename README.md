@@ -65,7 +65,7 @@ npm run build
 ```
   iPhone4 ：
           DPR= 2， device-width= 320px; 
-        picWidth = (240*(320*2/750))/2;
+          picWidth = (240*(320*2/750))/2;
   iPhone6 ：
           DPR= 2， device-width= 375px; 
           picWidth = (240*(375*2/750))/2;
