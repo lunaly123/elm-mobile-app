@@ -26,7 +26,6 @@
 
 特点
 
-- vue 2.0 + express + less
 - 数据 mock
 - 移动端高清适配
 
